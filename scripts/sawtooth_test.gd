@@ -15,7 +15,13 @@ func fill_buffer():
 	var frames_available = playback.get_frames_available()
 	#print(frames_available)
 	
+	var attack = round(frames_available * 0.015)
+	var release = round(frames_available * 0.2)
+	
 	# sawtooth wave
 	for i in range(frames_available):
-		playback.push_frame(Vector2.ONE * (((fmod(i * -1, increment) / increment) * 2.0) + 1.0) )
+		var level = min(1.0, 1 / (attack / i))
+		level = level - max(0, ((i - (frames_available - release)) / release))
+		
+		playback.push_frame(Vector2.ONE * (((fmod(i * -1, increment) / increment) * 2.0) + 1.0) * level)
 		phase = fmod(phase + increment, 1.0)

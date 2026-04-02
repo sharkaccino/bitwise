@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dtqs76fl5dgb7" path="res://scripts/master_volume.gd" id="8_kek77"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_0xm2m"]
+buffer_length = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
 font_size = 12
