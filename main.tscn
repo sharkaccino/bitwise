@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://b6ax7i54ruief"]
+
+[ext_resource type="Script" uid="uid://b5numb3mn82rf" path="res://scripts/sine_test.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cvawtl1lkglfh" path="res://scripts/ui/toolbar/frequency_graph.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://sl2p1sw40nds" path="res://scripts/stats_label.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cxy077j1nw0cy" path="res://scripts/ui/toolbar/spectrum_graph.gd" id="2_5vw27"]
+[ext_resource type="Script" uid="uid://b6ld60qfclglj" path="res://scripts/pulse_test.gd" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://bnjklatkj8y8y" path="res://scripts/triangle_test.gd" id="4_272bh"]
+[ext_resource type="Script" uid="uid://cercpel3611y6" path="res://scripts/noise_test.gd" id="5_5vw27"]
+[ext_resource type="Script" uid="uid://cuj2n0ccbkcvh" path="res://scripts/sawtooth_test.gd" id="5_272bh"]
+[ext_resource type="Script" uid="uid://dtqs76fl5dgb7" path="res://scripts/master_volume.gd" id="8_kek77"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_0xm2m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
+font_size = 12
+font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="Control" type="PanelContainer" unique_id=1138807673]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1105610775]
+layout_mode = 2
+
+[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer" unique_id=1955915339]
+layout_mode = 2
+
+[node name="FileButton" type="MenuButton" parent="VBoxContainer/Toolbar" unique_id=2035463806]
+layout_mode = 2
+disabled = true
+text = "File"
+item_count = 1
+popup/item_0/text = "Exit"
+popup/item_0/id = 0
+
+[node name="EditButton" type="MenuButton" parent="VBoxContainer/Toolbar" unique_id=1195509045]
+layout_mode = 2
+disabled = true
+text = "Edit
+"
+
+[node name="ViewButton" type="MenuButton" parent="VBoxContainer/Toolbar" unique_id=1066979388]
+layout_mode = 2
+disabled = true
+text = "View"
+
+[node name="HelpButton" type="MenuButton" parent="VBoxContainer/Toolbar" unique_id=52735575]
+layout_mode = 2
+disabled = true
+text = "Help"
+
+[node name="Control" type="Control" parent="VBoxContainer/Toolbar" unique_id=724878432]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Toolbar/Control" unique_id=1200380216]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StopButton" type="Button" parent="VBoxContainer/Toolbar/Control/HBoxContainer" unique_id=21026504]
+layout_mode = 2
+disabled = true
+text = "STOP"
+
+[node name="JumpBackButton" type="Button" parent="VBoxContainer/Toolbar/Control/HBoxContainer" unique_id=879126579]
+layout_mode = 2
+disabled = true
+text = "TO START"
+
+[node name="PlayPauseButton" type="Button" parent="VBoxContainer/Toolbar/Control/HBoxContainer" unique_id=204561758]
+layout_mode = 2
+disabled = true
+text = "PLAY"
+
+[node name="JumpEndButton" type="Button" parent="VBoxContainer/Toolbar/Control/HBoxContainer" unique_id=1800469771]
+layout_mode = 2
+disabled = true
+text = "TO END"
+
+[node name="LoopButton" type="Button" parent="VBoxContainer/Toolbar/Control/HBoxContainer" unique_id=1938666176]
+layout_mode = 2
+disabled = true
+text = "LOOP"
+
+[node name="FrequencyGraph" type="PanelContainer" parent="VBoxContainer/Toolbar" unique_id=521166318]
+layout_mode = 2
+
+[node name="GraphData" type="Control" parent="VBoxContainer/Toolbar/FrequencyGraph" unique_id=13540143]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+script = ExtResource("1_h2yge")
+
+[node name="SpectrumGraph" type="PanelContainer" parent="VBoxContainer/Toolbar" unique_id=1100953283]
+layout_mode = 2
+
+[node name="GraphData" type="Control" parent="VBoxContainer/Toolbar/SpectrumGraph" unique_id=446436369]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+script = ExtResource("2_5vw27")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer" unique_id=2012722166]
+layout_mode = 2
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(639)
+split_offset = 639
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VSplitContainer" unique_id=1714446822]
+layout_mode = 2
+
+[node name="SineButton" type="Button" parent="VBoxContainer/VSplitContainer/HBoxContainer" unique_id=387104603]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sine"
+script = ExtResource("1_0xm2m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/VSplitContainer/HBoxContainer/SineButton" unique_id=1834409405]
+stream = SubResource("AudioStreamGenerator_0xm2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer" unique_id=1942685205]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PulseButton" type="Button" parent="VBoxContainer/VSplitContainer/HBoxContainer/VBoxContainer" unique_id=167297459]
+layout_mode = 2
+size_flags_vertical = 3
+text = "pulse"
+script = ExtResource("3_7mycd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/VSplitContainer/HBoxContainer/VBoxContainer/PulseButton" unique_id=466211035]
+stream = SubResource("AudioStreamGenerator_0xm2m")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer/VBoxContainer" unique_id=236721327]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/HBoxContainer/VBoxContainer/CenterContainer" unique_id=1455725821]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VSplitContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer" unique_id=866789318]
+layout_mode = 2
+text = "duty cycle: "
+
+[node name="DutyCycleInput" type="SpinBox" parent="VBoxContainer/VSplitContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer" unique_id=1989785981]
+unique_name_in_owner = true
+layout_mode = 2
+step = 0.5
+value = 50.0
+alignment = 1
+suffix = "%"
+select_all_on_focus = true
+
+[node name="TriangleButton" type="Button" parent="VBoxContainer/VSplitContainer/HBoxContainer" unique_id=2074317182]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "triangle
+"
+script = ExtResource("4_272bh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/VSplitContainer/HBoxContainer/TriangleButton" unique_id=16744405]
+stream = SubResource("AudioStreamGenerator_0xm2m")
+
+[node name="SawtoothButton" type="Button" parent="VBoxContainer/VSplitContainer/HBoxContainer" unique_id=1583712397]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sawtooth
+"
+script = ExtResource("5_272bh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/VSplitContainer/HBoxContainer/SawtoothButton" unique_id=587445885]
+stream = SubResource("AudioStreamGenerator_0xm2m")
+
+[node name="NoiseButton" type="Button" parent="VBoxContainer/VSplitContainer/HBoxContainer" unique_id=1745266165]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "noise"
+script = ExtResource("5_5vw27")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/VSplitContainer/HBoxContainer/NoiseButton" unique_id=466630271]
+stream = SubResource("AudioStreamGenerator_0xm2m")
+
+[node name="ControlBar" type="HBoxContainer" parent="VBoxContainer" unique_id=1769178407]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ControlBar" unique_id=1417958173]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ControlBar/VBoxContainer" unique_id=1052578547]
+layout_mode = 2
+text = "MASTER VOL"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/ControlBar/VBoxContainer" unique_id=1631692737]
+layout_mode = 2
+value = 20.0
+script = ExtResource("8_kek77")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ControlBar" unique_id=563740072]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ControlBar/HBoxContainer2" unique_id=501993185]
+layout_mode = 2
+text = "frequency:"
+
+[node name="TEMP_Frequency" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer2" unique_id=728254844]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 16000.0
+value = 440.0
+rounded = true
+alignment = 1
+suffix = "hz"
+select_all_on_focus = true
+
+[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer" unique_id=1835673980]
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer/StatusBar" unique_id=1579139545]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bitwise 0.0.0-dev"
+
+[node name="StatsLabel" type="Label" parent="VBoxContainer/StatusBar" unique_id=1751631302]
+layout_mode = 2
+text = "Latency: 0.00 ms"
+label_settings = SubResource("LabelSettings_7dm0k")
+script = ExtResource("1_ig7tw")
